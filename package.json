@@ -1,0 +1,20 @@
+{
+  "name": "trash-calendar",
+  "version": "0.1.0",
+  "description": "Karlsruhe trash collection dates as iCal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cartesian": "^1.0.1",
+    "cheerio": "^1.0.0-rc.2",
+    "escape-string-regexp": "^1.0.5",
+    "got": "^7.1.0",
+    "immutable-ics": "^0.4.0",
+    "lodash": "^4.17.4",
+    "moment-timezone": "^0.5.13"
+  }
+}

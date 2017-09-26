@@ -1,26 +1,15 @@
-const { URL } = require('url')
-const got = require('got')
-const cheerio = require('cheerio')
-const cartesian = require('cartesian')
-const map = require('lodash/fp/map')
-const zipObject = require('lodash/fp/zipObject')
-const flatMap = require('lodash/flatMap')
-const extractTrashDates = require('./extract-trash-dates')
-const iCal = require('./ical')
+const express = require('express')
+const retrieveTrashCalendar = require('./retrieve-trash-calendar')
+const app = express()
 
-function trashDatesToEventList(trashDates) {
-  return flatMap(Object.entries(trashDates), cartesian)
-    .map(zipObject(['title', 'date']))
-}
+app.get('/:street', function (req, res) {
+  const street = req.params.street
+  const fileName = `Abfallkalender ${street}.ics`
+  retrieveTrashCalendar(req.params.street)
+    .then(t => res.attachment(fileName).send(t))
+    .catch(_ => res.status(404).send(`No data found for ${street}`))
+})
 
-const url = new URL('https://web3.karlsruhe.de/service/abfall/akal/akal.php')
-url.searchParams.set('strasse', 'LUISENSTRAßE 1-25Z')
-
-got(url)
-  .then(response => cheerio.load(response.body))
-  .then(extractTrashDates)
-  .then(trashDatesToEventList)
-  .then(map(iCal.createEventComponent))
-  .then(iCal.createCalendarComponent)
-  .then(cal => console.log(cal.toString()))
-  .catch(err => console.error(err))
+app.listen(3000, function () {
+  console.log('Trash calendar listening on port 3000!')
+})

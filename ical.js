@@ -1,8 +1,10 @@
 const { Component, Property } = require('immutable-ics')
+const version = require('./package').version
+const idDomain = 'ka-trash.raphinesse.de'
 
 function eventUid(event) {
   const dateString = event.date.toISOString().split('T')[0]
-  return `${event.title}:${dateString}@trash.raphinesse.de`
+  return `${event.title}:${dateString}@${idDomain}`
 }
 
 module.exports = {
@@ -26,7 +28,7 @@ module.exports = {
       name: 'VCALENDAR',
       properties: [
         new Property({ name: 'VERSION', value: 2 }),
-        new Property({ name: 'PRODID', value: `trash.raphinesse.de@0.1.0` }),
+        new Property({ name: 'PRODID', value: `${idDomain}@${version}` }),
       ],
       components: events,
     })

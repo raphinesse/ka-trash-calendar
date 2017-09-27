@@ -15,7 +15,7 @@ function trashDatesToEventList(trashDates) {
 
 const baseUrl = 'https://web3.karlsruhe.de/service/abfall/akal/akal.php'
 
-module.exports = function retrieveTrashCalendar(strasse) {
+module.exports = function fetchTrashCalendar(strasse) {
   const url = new URL(baseUrl)
   url.searchParams.set('strasse', strasse)
 

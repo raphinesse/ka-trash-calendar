@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "apicache": "^1.1.0",
     "cartesian": "^1.0.1",
     "change-case": "^3.0.1",
     "cheerio": "^1.0.0-rc.2",

@@ -1,6 +1,6 @@
 {
   "name": "ka-trash-calendar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Server that parses official Karlsruhe trash collection dates and serves them in iCalendar format",
   "main": "server.js",
   "scripts": {

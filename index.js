@@ -1,5 +1,7 @@
 const express = require('express')
+const port = require('./port')
 const retrieveTrashCalendar = require('./retrieve-trash-calendar')
+
 const app = express()
 
 app.get('/:street', function (req, res) {
@@ -10,6 +12,6 @@ app.get('/:street', function (req, res) {
     .catch(_ => res.status(404).send(`No data found for ${street}`))
 })
 
-app.listen(3000, function () {
-  console.log('Trash calendar listening on port 3000!')
+const server = app.listen(port, () => {
+  console.log(`Trash calendar listening on port ${port}`)
 })

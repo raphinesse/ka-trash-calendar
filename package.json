@@ -1,13 +1,13 @@
 {
-  "name": "trash-calendar",
+  "name": "ka-trash-calendar",
   "version": "0.1.0",
-  "description": "Karlsruhe trash collection dates as iCal",
+  "description": "Server that parses official Karlsruhe trash collection dates and serves them in iCalendar format",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Raphael von der Grün",
+  "license": "MIT",
   "dependencies": {
     "apicache": "^1.1.0",
     "cartesian": "^1.0.1",

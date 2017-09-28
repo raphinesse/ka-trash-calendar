@@ -1,5 +1,5 @@
 const esr = require('escape-string-regexp')
-const moment = require('moment-timezone')
+const moment = require('moment')
 const map = require('lodash/map')
 const fromPairs = require('lodash/fromPairs')
 
@@ -7,7 +7,7 @@ const germanDateFormat = 'DD.MM.YYYY'
 const germanDateRegexString = esr(germanDateFormat).replace(/[DMY]/g, '\\d')
 const germanDateRegex = new RegExp(germanDateRegexString, 'g')
 function parseGermanDate(s) {
-  return moment.tz(s, germanDateFormat, true, 'Europe/Berlin').toDate()
+  return moment(s, germanDateFormat, true).toDate()
 }
 
 function parseTitle(s) {

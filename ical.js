@@ -1,6 +1,11 @@
+const moment = require('moment')
 const { Component, Property } = require('immutable-ics')
 const version = require('./package').version
 const idDomain = 'ka-trash.raphinesse.de'
+
+function formatDate(date) {
+  return moment(date).format('YYYYMMDD')
+}
 
 function eventUid(event) {
   const dateString = event.date.toISOString().split('T')[0]
@@ -18,7 +23,7 @@ module.exports = {
         new Property({
           name: 'DTSTART',
           parameters: { VALUE: 'DATE' },
-          value: event.date,
+          value: formatDate(event.date),
         }),
       ]
     })

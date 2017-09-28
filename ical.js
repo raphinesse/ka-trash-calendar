@@ -11,8 +11,7 @@ function formatDate(date) {
 }
 
 function eventUid(event) {
-  const dateString = event.date.toISOString().split('T')[0]
-  return `${event.title}:${dateString}@${idDomain}`
+  return `${event.title}-${formatDate(event.date)}@${idDomain}`
 }
 
 module.exports = {

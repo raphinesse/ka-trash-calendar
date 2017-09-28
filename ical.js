@@ -1,7 +1,10 @@
 const moment = require('moment')
 const { Component, Property } = require('immutable-ics')
+
 const version = require('./package').version
 const idDomain = 'ka-trash.raphinesse.de'
+const PRODID = `${idDomain}@${version}`
+
 
 function formatDate(date) {
   return moment(date).format('YYYYMMDD')
@@ -33,7 +36,7 @@ module.exports = {
       name: 'VCALENDAR',
       properties: [
         new Property({ name: 'VERSION', value: 2 }),
-        new Property({ name: 'PRODID', value: `${idDomain}@${version}` }),
+        new Property({ name: 'PRODID', value: PRODID }),
       ],
       components: events,
     })
